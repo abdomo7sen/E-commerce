@@ -59,8 +59,8 @@ const protectedRoutes=async (req, res,next) => {
             if (time >token.iat) return next(new AppError(messages.token.invalidToken,404))
         
         }
-        req.user=data
-    next()
+        req.user=userPayload
+    return next()
 }
 
 const allowedTo=(...roles)=>{

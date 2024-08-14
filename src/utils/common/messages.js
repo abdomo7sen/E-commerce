@@ -61,5 +61,7 @@ export const messages={
     Product:{...generalMessage("product"),},
     Review:{...generalMessage("review"),},
     Coupon:{...generalMessage("coupon"),},
+    Wishlist:{...generalMessage("Wishlist"),},
+    Address:{...generalMessage("address"),},
     Success:{Success:`Success `},
 }

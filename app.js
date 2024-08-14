@@ -7,7 +7,7 @@ import { conn } from './database/dbConnection.js'
 import { globalError } from './src/middleware/globalError.js'
 import { AppError } from './src/utils/appError.js';
 import { bootstrape } from './src/modules/bootstrape.js';
-dotenv.config({path:"./congfig/.env"})
+dotenv.config({path:'./config/.env'})
 const app = express()
 const port = 3000
 

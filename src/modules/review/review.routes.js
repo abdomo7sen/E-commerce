@@ -1,15 +1,17 @@
 import { Router } from "express";
-import { addCategory, deleteCategory, getAllCategories, getCategory, updateCategory } from "./review.controller.js";
+import {  addReview,  deleteReview, getAllReviews,  getReview,updateReview } from "./review.controller.js";
 import { catchError } from "../../middleware/catchError.js";
+import { allowedTo, protectedRoutes } from "../auth/auth.controller.js";
+import { systemRole } from "../../utils/common/enum.js";
 
-const categoryRouter=Router()
+const reviewRouter=Router()
 
-categoryRouter.route("/")
-.post(catchError(addCategory))
-.get(catchError(getAllCategories))
+reviewRouter.route("/")
+.post(protectedRoutes,allowedTo(systemRole.USER),catchError(addReview))
+.get(catchError(getAllReviews))
 
-categoryRouter.route('/:id')
-.get(catchError(getCategory))
-.put(catchError(updateCategory))
-.delete(catchError(deleteCategory))
-export default categoryRouter
+reviewRouter.route('/:id')
+.get(catchError(getReview))
+.put(protectedRoutes,allowedTo(systemRole.USER),catchError(updateReview))
+.delete(protectedRoutes,allowedTo(systemRole.USER,systemRole.ADMIN),catchError(deleteReview))
+export default reviewRouter

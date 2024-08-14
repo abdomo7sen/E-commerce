@@ -1,15 +1,15 @@
 import { Router } from "express";
-import { addCategory, deleteCategory, getAllCategories, getCategory, updateCategory } from "./coupon.controller.js";
+import { addCoupon, deleteCoupon,  getAllCoupons, getCoupon, updateCoupon } from "./coupon.controller.js";
 import { catchError } from "../../middleware/catchError.js";
 
-const categoryRouter=Router()
+const couponRouter=Router()
 
-categoryRouter.route("/")
-.post(catchError(addCategory))
-.get(catchError(getAllCategories))
+couponRouter.route("/")
+.post(catchError(addCoupon))
+.get(catchError(getAllCoupons))
 
-categoryRouter.route('/:id')
-.get(catchError(getCategory))
-.put(catchError(updateCategory))
-.delete(catchError(deleteCategory))
-export default categoryRouter
+couponRouter.route('/:id')
+.get(catchError(getCoupon))
+.put(catchError(updateCoupon))
+.delete(catchError(deleteCoupon))
+export default couponRouter

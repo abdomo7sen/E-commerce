@@ -82,11 +82,24 @@ const schema = new Schema({
     
 
 
-},{timestamps: true,versionKey:false})
+},{timestamps: true,versionKey:false,toJSON:{virtuals:true},id:false})
+
+schema.virtual("reviews",
+    {
+        ref: "Review",
+        localField: "_id",
+        foreignField: "product",
+        
+    }
+)
+
+schema.pre("findOne",function(){
+    this.populate("reviews")
+})
 
 schema.post("init",(doc)=>{
-    if( doc.imageCover)doc.imageCover='http://127.0.0.1:3000/uploads/products/'+doc.imageCover
-    if(doc.images)doc.images=doc.images.map(img=>"http://127.0.0.1:3000/uploads/products/"+img)
+    if( doc.imageCover)doc.imageCover=process.env.BASE_URL +'products/'+doc.imageCover
+    if(doc.images)doc.images=doc.images.map(img=>process.env.BASE_URL +"products/"+img)
 })
 
 export const Product= model("Product",schema)

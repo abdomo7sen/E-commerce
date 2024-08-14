@@ -28,7 +28,7 @@ const schema = new Schema({
 },{timestamps: true,versionKey:false})
 
 schema.post("init",(doc)=>{
-    doc.logo="http://127.0.0.1:3000/uploads/brand/"+doc.logo
+    doc.logo=process.env.BASE_URL +"brand/"+doc.logo
 })
 
 

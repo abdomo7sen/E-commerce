@@ -28,7 +28,7 @@ const schema = new Schema({
 
 },{timestamps: true,versionKey:false})
 schema.post('init',(doc)=>{
-    doc.image = "http://127.0.0.1:3000/uploads/category/"+doc.image
+    doc.image = process.env.BASE_URL +"category/"+doc.image
 })
 
 

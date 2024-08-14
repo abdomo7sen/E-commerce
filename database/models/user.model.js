@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { model, Schema, Types } from "mongoose";
-import { gender, systemRole } from "../../src/utils/common/enum.js";
+import { systemRole } from "../../src/utils/common/enum.js";
 
 
 const schema = new Schema({
@@ -41,7 +41,14 @@ const schema = new Schema({
         enum:Object.values(systemRole),
         default:systemRole.USER
     },
-    passwordChangedAt:Date
+    passwordChangedAt:Date,
+
+    wishlist:[{type:Types.ObjectId,ref:"Product"}],
+    addresses:[{
+        city:String,
+        phone:String,
+        street:String,
+    }]
     
 },{timestamps: true,versionKey:false})
 

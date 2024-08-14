@@ -3,7 +3,7 @@ import { model, Schema, Types } from "mongoose";
 
 const schema = new Schema({
 
-    comment:string,
+    comment:String,
     user:{
         type: Types.ObjectId,
         ref: "User",
@@ -21,5 +21,10 @@ const schema = new Schema({
         required: true,
     }
 },{timestamps: true,versionKey:false})
+
+schema.pre(/^find/,function (){
+    this.populate('user',"name")
+    
+})
 
 export const Review= model("Review",schema)
