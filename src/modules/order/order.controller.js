@@ -58,9 +58,9 @@ const createCheckOutSession= async(req, res, next) => {
         {
             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
             price_data:{
-                unit_amount:totalOrderPrice*100,
-                currency:"egp",
-                product_data:{
+                    currency:"egp",
+                    unit_amount:totalOrderPrice*100,
+                product:{
                     name:req.user.name,
                 }
             
@@ -71,7 +71,6 @@ const createCheckOutSession= async(req, res, next) => {
       mode: 'payment',
       success_url: `https://abdomo7sen.github.io/products`,
       cancel_url: `https://abdomo7sen.github.io/`,
-
       customer_email:req.user.email,
       client_reference_id:req.params.id,
       metadata:req.body.shippingAddress
