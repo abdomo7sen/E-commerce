@@ -4,8 +4,11 @@ import { Order } from "../../../database/models/order.model.js"
 import { Product } from "../../../database/models/product.model.js"
 import { AppError } from "../../utils/appError.js"
 import { messages } from "../../utils/common/messages.js"
+import * as dotenv from "dotenv"
+dotenv.config({path:'./config/.env'})
+
 import Stripe from 'stripe';
-const stripe = new Stripe("sk_test_51Q0BWbD5kaxGjCxbVAkzRpQ7owQ2K4uZuXGqBBJpQWe8Aq1tUm9fccmBEPIsOU05ihYlC615gl1qfPkupTv3fsre001rcBFiSz");
+const stripe = new Stripe(process.env.SCRT_KEY);
 
 
 const cashOrder= async (req,res,next)=>{
