@@ -60,8 +60,8 @@ const createCheckOutSession= async(req, res, next) => {
             price_data:{
                     currency:"egp",
                     unit_amount:totalOrderPrice*100,
-                product:{
-                    name:req.user.name,
+                product_data:{
+                    name:req.user.userId,
                 }
             
             },
@@ -69,7 +69,7 @@ const createCheckOutSession= async(req, res, next) => {
           },
       ],
       mode: 'payment',
-      success_url: `https://abdomo7sen.github.io/products`,
+      success_url: `https://abdomo7sen.github.io/`,
       cancel_url: `https://abdomo7sen.github.io/`,
       customer_email:req.user.email,
       client_reference_id:req.params.id,

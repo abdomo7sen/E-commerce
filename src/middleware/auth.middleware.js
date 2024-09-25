@@ -53,9 +53,9 @@ const auth=(roles)=>{
         if (err) return next(new AppError(messages.token.invalidToken,403))
         if (!data?.userId) return next(new AppError(messages.token.invalidPayload,400))
         const user=await User.findById(data.userId)
-        if(!user) return next(new AppError(messages.user.userNotFound,404))
-        if(user.status==status.INACTIVE) return next(new AppError(messages.user.mustLogin,400))
-        if(!roles.includes(user.role)) return next(new AppError(messages.user.userNotAuthorized,400))
+        if(!user) return next(new AppError(messages.User.NotFound,404))
+        if(user.status==status.INACTIVE) return next(new AppError(messages.User.mustLogin,400))
+        if(!roles.includes(user.role)) return next(new AppError(messages.User.userNotAuthorized,400))
             req.authUser=user
             return next()
 
