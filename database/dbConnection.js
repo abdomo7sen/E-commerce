@@ -1,6 +1,8 @@
 import { connect } from "mongoose";
+import * as dotenv from "dotenv"
+dotenv.config({path:'./config/.env'})
 
-export const conn = connect("mongodb://127.0.0.1:27017/e-commerce")
+let db=process.env.MONGO_URI
+export const conn = await connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.error("MongoDB Connection Error:", err));
-  // 'mongodb://127.0.0.1:27017/test'
+  .catch((err) => console.error("MongoDB Connection Error:", err));  

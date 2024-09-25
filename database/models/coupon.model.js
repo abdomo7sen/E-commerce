@@ -7,7 +7,7 @@ const schema = new Schema({
         type:String,
         unique:true,
         required: true
-    },
+    }, 
     expires:Date,
     discount:Number
 },{timestamps: true,versionKey:false})

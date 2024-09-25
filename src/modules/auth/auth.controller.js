@@ -21,7 +21,6 @@ const signUp=async(req,res,next)=>{
 const signin=async(req,res,next)=>{
     const user=await User.findOne({email:req.body.email})
     if(!user) return next(new AppError(messages.User.NotFound,404))
-    console.log(user);
     if(user&&bcrypt.compareSync(req.body.password,user.password)){
         let token=jwt.sign({userId:user._id,email:user.email,role:user.role},process.env.JWT_KEY)
         res.status(200).json({messages: messages.User.userSignedInSuccessfully,token})

@@ -5,11 +5,11 @@ import { Product } from "../../../database/models/product.model.js"
 import { deleteOne, getOne } from "../handler/handler.js"
 import { ApiFeature } from "../../utils/apiFeature.js"
 
-
 const addProduct= async (req,res,next)=>{
     req.body.slug=slugify(req.body.title)
     req.body.imageCover=req.files.imageCover[0].filename
     req.body.images=req.files.images.map(img=>img.filename)
+    req.body.sold?req.body.sold:req.body.sold=0
     const product=new Product(req.body)
     await product.save()
     res.status(201).json({message:messages.Product.CreatedSuccessfully,product})

@@ -6,9 +6,10 @@ import { Coupon } from "../../../database/models/coupon.model.js"
 
 
 const addCoupon= async (req,res,next)=>{
-    req.body.slug=slugify(req.body.name)
+    let isExist=await Coupon.findOne({code:req.body.code})
+    if(isExist) return next(new AppError(messages.Coupon.AlreadyExists,404))
     const coupon=new Coupon(req.body)
-    await Coupon.save()
+    await coupon.save()
     res.status(201).json({message:messages.Coupon.CreatedSuccessfully,coupon})
 }
 

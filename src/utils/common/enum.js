@@ -1,30 +1,19 @@
-
-const gender={
-    MALE: 'male',
-    FEMALE: 'female'
-}
-Object.freeze(gender)
 const systemRole={
     ADMIN: 'admin',
     USER: 'user'
 }
 Object.freeze(systemRole)
 
-const references={
-    PRODUCT:"Product",
-    COMMENT:"Comment",
+const payment={
+    CASH: 'cash',
+    CARD: 'card'
 }
-Object.freeze(references)
-const status={
-    ACTIVE: 'active',
-    INACTIVE: 'inactive',
-}
-Object.freeze(status)
+Object.freeze(payment)
+
 
 
 export{
-    gender,
     systemRole,
-    references,
-    status,
+    payment
+
 }

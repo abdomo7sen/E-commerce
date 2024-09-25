@@ -7,7 +7,11 @@ export const generalMessage =(entity)=>({
     DeletedFailed:`Failed to delete ${entity}`,
     NotFound:`${entity} not found`,
     AlreadyExists:`${entity} already exists`,
-    Success:`Success `
+    Success:`Success `,
+    Invalid:`Invalid `,
+    Apply:`Applied successfully `,
+    Added:`item Added successfully`,
+    stock:`item quantity is greater than available`
 
 })
 
@@ -34,26 +38,10 @@ export const messages={
         emailNotVerified:"Email not verified",
         accountsFound:"Accounts found"
     },
-    mobileNumber:{...generalMessage("mobileNumber"),
-        mobileNumberNotExists:"Mobile number",
-        
-    },
     otp:{
         ...generalMessage("otp"),
     invalidOtp:"invalid Otp",
     otpExpired:"otp expired",
-        },
-    company:{
-        ...generalMessage("company"),
-    
-        },
-    job:{
-        ...generalMessage("job"),
-    
-        },
-    Application:{
-        ...generalMessage("Application"),
-    
         },
     Category:{...generalMessage("category"),},
     Brand:{...generalMessage("brand"),},
@@ -61,7 +49,9 @@ export const messages={
     Product:{...generalMessage("product"),},
     Review:{...generalMessage("review"),},
     Coupon:{...generalMessage("coupon"),},
+    cart:{...generalMessage("cart"),},
     Wishlist:{...generalMessage("Wishlist"),},
     Address:{...generalMessage("address"),},
+    order:{...generalMessage("order"),},
     Success:{Success:`Success `},
 }
